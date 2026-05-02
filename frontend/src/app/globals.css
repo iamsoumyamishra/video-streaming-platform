@@ -1,0 +1,214 @@
+@import "tailwindcss";
+/*
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+} */
+
+@layer base {
+  /* =========================================
+     Professional Custom Scrollbar 
+     ========================================= */
+  
+  /* Webkit Browsers (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 6px;  /* Very thin and elegant vertical scrollbar */
+    height: 6px; /* For horizontal scrollbars (like your movie rows) */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent; /* Invisible track so it looks floating */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    /* Uses your theme's subtle border color */
+    background-color: var(--border-subtle); 
+    border-radius: 10px; /* Fully rounded pill shape */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    /* Gets slightly darker/lighter when the user hovers over it */
+    background-color: var(--text-muted); 
+  }
+
+  /* Firefox (Uses a different standard) */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-subtle) transparent;
+  }
+}
+
+@layer base {
+
+
+  * {
+    scrollbar-width: thin;
+    /* FIX: Swapped to text-muted for better visibility */
+    scrollbar-color: var(--text-muted) transparent;
+  }
+
+  /* 2. Webkit Browsers (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 14px;  /* Slightly wider to give the border room to breathe */
+    height: 14px; 
+  }
+
+  /* 3. The Track (Invisible) */
+  ::-webkit-scrollbar-track {
+    background: transparent; 
+  }
+
+  /* 4. The Thumb (The visible pill) */
+  ::-webkit-scrollbar-thumb {
+    /* FIX: Using text-muted so it actually shows up against the background! */
+    background-color: var(--text-muted); 
+    border-radius: 20px; 
+    
+    /* The trick stays: this cuts into the thumb to make it look thinner and floating */
+    border: 4px solid var(--app-bg); 
+  }
+
+  /* 5. Hover State */
+  ::-webkit-scrollbar-thumb:hover {
+    /* FIX: Gets noticeably darker/stronger when you hover over it */
+    background-color: var(--text-main); 
+  }
+
+
+  :root {
+    
+    /* Global App Layout */
+    --app-bg: #000000;          /* Deepest black for the main video viewing area */
+    --surface-bg: #0a0a0a;      /* Slightly elevated for sidebars, navbars, and cards */
+    --border-subtle: #1f1f1f;   /* Soft dividers */
+    
+    /* Typography */
+    --text-main: #ededed;
+    --text-muted: #8b8b8b;
+    --text-strong: #ffffff;
+    
+    /* Brand & Gradients */
+    --brand-start: #ffffff;
+    --brand-end: #a3a3a3;
+    
+    /* Interactive Elements */
+    --surface-hover: #171717;
+    --surface-active: #262626;
+    --text-active: #ffffff;
+    
+    /* Semantic States */
+    --danger-bg: #2b1414;
+    --danger-text: #ef4444;
+  }
+
+  /* Minimal Light Theme */
+  [data-theme='light'] {
+    --app-bg: #f5f5f5;          /* Soft gray for the main background */
+    --surface-bg: #ffffff;      /* Pure white for elevated surfaces */
+    --border-subtle: #eaeaea;
+    
+    --text-main: #171717;
+    --text-muted: #737373;
+    --text-strong: #000000;
+    
+    --brand-start: #000000;
+    --brand-end: #525252;
+    
+    --surface-hover: #fafafa;
+    --surface-active: #f0f0f0;
+    --text-active: #000000;
+    
+    --danger-bg: #fee2e2;
+    --danger-text: #dc2626;
+  }
+
+  /* OLED Crimson Theme */
+  [data-theme='oled-crimson'] {
+    --app-bg: #000000;          /* True Black */
+    --surface-bg: #09090b;      /* Almost Black (Zinc 950) */
+    --border-subtle: #27272a;   /* Zinc 800 */
+    
+    --text-main: #d4d4d8;       /* Zinc 300 */
+    --text-muted: #71717a;      /* Zinc 500 */
+    --text-strong: #ffffff;
+    
+    --brand-start: #e11d48;     /* Deep Crimson */
+    --brand-end: #9f1239;       /* Darker Red */
+    
+    --surface-hover: #18181b;   /* Zinc 900 */
+    --surface-active: #3f0f1c;  /* Very dark tinted red */
+    --text-active: #fda4af;     /* Soft pink/red */
+    
+    --danger-bg: #27272a;
+    --danger-text: #f43f5e;
+  }
+
+  /* Midnight Theme */
+  [data-theme='midnight'] {
+    --app-bg: #0b1121;          /* Very deep navy */
+    --surface-bg: #0f172a;      /* Slate 900 */
+    --border-subtle: #1e293b;   /* Slate 800 */
+    
+    --text-main: #e2e8f0;       /* Slate 200 */
+    --text-muted: #94a3b8;      /* Slate 400 */
+    --text-strong: #ffffff;
+    
+    --brand-start: #38bdf8;     /* Soft Sky Blue */
+    --brand-end: #818cf8;       /* Soft Indigo */
+    
+    --surface-hover: #1e293b;
+    --surface-active: #1e3a8a;  /* Blue 900 */
+    --text-active: #bfdbfe;     /* Blue 200 */
+    
+    --danger-bg: #4c1d95;       
+    --danger-text: #c4b5fd;
+  }
+
+  /* Dune / Sepia Theme */
+  [data-theme='dune'] {
+    --app-bg: #1c1917;          /* Stone 900 - Warm dark brown */
+    --surface-bg: #292524;      /* Stone 800 */
+    --border-subtle: #44403c;   /* Stone 700 */
+    
+    --text-main: #e7e5e4;       /* Stone 200 */
+    --text-muted: #a8a29e;      /* Stone 400 */
+    --text-strong: #fafaf9;     /* Stone 50 */
+    
+    --brand-start: #d97706;     /* Muted Amber */
+    --brand-end: #b45309;       /* Dark Amber */
+    
+    --surface-hover: #44403c;
+    --surface-active: #78350f;  /* Amber 900 */
+    --text-active: #fde68a;     /* Amber 200 */
+    
+    --danger-bg: #451a03;
+    --danger-text: #f87171;
+  }
+
+  /* Automatically apply the theme to the entire app body */
+  body {
+    background-color: var(--app-bg);
+    color: var(--text-main);
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+}
